@@ -1,4 +1,4 @@
-# Install script for directory: /Users/Emerson/Documents/Space@VT/Code/GLO-Code/GLO Filter Code
+# Install script for directory: /Users/Emerson/Documents/Space@VT/Code/GLO-Code/GLO Scanning Modes
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/Emerson/Documents/Space@VT/Code/GLO-Code/GLO Filter Code/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/Emerson/Documents/Space@VT/Code/GLO-Code/GLO Scanning Modes/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

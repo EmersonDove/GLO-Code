@@ -59,45 +59,45 @@ RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/Users/Emerson/Documents/Space@VT/Code/GLO-Code/GLO Filter Code"
+CMAKE_SOURCE_DIR = "/Users/Emerson/Documents/Space@VT/Code/GLO-Code/GLO Scanning Modes"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/Users/Emerson/Documents/Space@VT/Code/GLO-Code/GLO Filter Code/cmake-build-debug"
+CMAKE_BINARY_DIR = "/Users/Emerson/Documents/Space@VT/Code/GLO-Code/GLO Scanning Modes/cmake-build-debug"
 
 #=============================================================================
-# Target rules for target CMakeFiles/GLO_Filter_Code.dir
+# Target rules for target CMakeFiles/GLO_Scanning_Modes.dir
 
 # All Build rule for target.
-CMakeFiles/GLO_Filter_Code.dir/all:
-	$(MAKE) -f CMakeFiles/GLO_Filter_Code.dir/build.make CMakeFiles/GLO_Filter_Code.dir/depend
-	$(MAKE) -f CMakeFiles/GLO_Filter_Code.dir/build.make CMakeFiles/GLO_Filter_Code.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/Users/Emerson/Documents/Space@VT/Code/GLO-Code/GLO Filter Code/cmake-build-debug/CMakeFiles" --progress-num=1,2,3 "Built target GLO_Filter_Code"
-.PHONY : CMakeFiles/GLO_Filter_Code.dir/all
+CMakeFiles/GLO_Scanning_Modes.dir/all:
+	$(MAKE) -f CMakeFiles/GLO_Scanning_Modes.dir/build.make CMakeFiles/GLO_Scanning_Modes.dir/depend
+	$(MAKE) -f CMakeFiles/GLO_Scanning_Modes.dir/build.make CMakeFiles/GLO_Scanning_Modes.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/Users/Emerson/Documents/Space@VT/Code/GLO-Code/GLO Scanning Modes/cmake-build-debug/CMakeFiles" --progress-num=1,2,3 "Built target GLO_Scanning_Modes"
+.PHONY : CMakeFiles/GLO_Scanning_Modes.dir/all
 
 # Include target in all.
-all: CMakeFiles/GLO_Filter_Code.dir/all
+all: CMakeFiles/GLO_Scanning_Modes.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/GLO_Filter_Code.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/Emerson/Documents/Space@VT/Code/GLO-Code/GLO Filter Code/cmake-build-debug/CMakeFiles" 3
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/GLO_Filter_Code.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/Emerson/Documents/Space@VT/Code/GLO-Code/GLO Filter Code/cmake-build-debug/CMakeFiles" 0
-.PHONY : CMakeFiles/GLO_Filter_Code.dir/rule
+CMakeFiles/GLO_Scanning_Modes.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/Emerson/Documents/Space@VT/Code/GLO-Code/GLO Scanning Modes/cmake-build-debug/CMakeFiles" 3
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/GLO_Scanning_Modes.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/Emerson/Documents/Space@VT/Code/GLO-Code/GLO Scanning Modes/cmake-build-debug/CMakeFiles" 0
+.PHONY : CMakeFiles/GLO_Scanning_Modes.dir/rule
 
 # Convenience name for target.
-GLO_Filter_Code: CMakeFiles/GLO_Filter_Code.dir/rule
+GLO_Scanning_Modes: CMakeFiles/GLO_Scanning_Modes.dir/rule
 
-.PHONY : GLO_Filter_Code
-
-# clean rule for target.
-CMakeFiles/GLO_Filter_Code.dir/clean:
-	$(MAKE) -f CMakeFiles/GLO_Filter_Code.dir/build.make CMakeFiles/GLO_Filter_Code.dir/clean
-.PHONY : CMakeFiles/GLO_Filter_Code.dir/clean
+.PHONY : GLO_Scanning_Modes
 
 # clean rule for target.
-clean: CMakeFiles/GLO_Filter_Code.dir/clean
+CMakeFiles/GLO_Scanning_Modes.dir/clean:
+	$(MAKE) -f CMakeFiles/GLO_Scanning_Modes.dir/build.make CMakeFiles/GLO_Scanning_Modes.dir/clean
+.PHONY : CMakeFiles/GLO_Scanning_Modes.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/GLO_Scanning_Modes.dir/clean
 
 .PHONY : clean
 

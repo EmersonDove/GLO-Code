@@ -48,10 +48,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/Users/Emerson/Documents/Space@VT/Code/GLO-Code/GLO Filter Code"
+CMAKE_SOURCE_DIR = "/Users/Emerson/Documents/Space@VT/Code/GLO-Code/GLO Scanning Modes"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/Users/Emerson/Documents/Space@VT/Code/GLO-Code/GLO Filter Code/cmake-build-debug"
+CMAKE_BINARY_DIR = "/Users/Emerson/Documents/Space@VT/Code/GLO-Code/GLO Scanning Modes/cmake-build-debug"
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/Emerson/Documents/Space@VT/Code/GLO-Code/GLO Filter Code/cmake-build-debug/CMakeFiles" "/Users/Emerson/Documents/Space@VT/Code/GLO-Code/GLO Filter Code/cmake-build-debug/CMakeFiles/progress.marks"
+	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/Emerson/Documents/Space@VT/Code/GLO-Code/GLO Scanning Modes/cmake-build-debug/CMakeFiles" "/Users/Emerson/Documents/Space@VT/Code/GLO-Code/GLO Scanning Modes/cmake-build-debug/CMakeFiles/progress.marks"
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/Emerson/Documents/Space@VT/Code/GLO-Code/GLO Filter Code/cmake-build-debug/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/Emerson/Documents/Space@VT/Code/GLO-Code/GLO Scanning Modes/cmake-build-debug/CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
@@ -111,44 +111,44 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named GLO_Filter_Code
+# Target rules for targets named GLO_Scanning_Modes
 
 # Build rule for target.
-GLO_Filter_Code: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 GLO_Filter_Code
-.PHONY : GLO_Filter_Code
+GLO_Scanning_Modes: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 GLO_Scanning_Modes
+.PHONY : GLO_Scanning_Modes
 
 # fast build rule for target.
-GLO_Filter_Code/fast:
-	$(MAKE) -f CMakeFiles/GLO_Filter_Code.dir/build.make CMakeFiles/GLO_Filter_Code.dir/build
-.PHONY : GLO_Filter_Code/fast
+GLO_Scanning_Modes/fast:
+	$(MAKE) -f CMakeFiles/GLO_Scanning_Modes.dir/build.make CMakeFiles/GLO_Scanning_Modes.dir/build
+.PHONY : GLO_Scanning_Modes/fast
 
-Filters.o: Filters.cpp.o
+ScanningModes.o: ScanningModes.cpp.o
 
-.PHONY : Filters.o
+.PHONY : ScanningModes.o
 
 # target to build an object file
-Filters.cpp.o:
-	$(MAKE) -f CMakeFiles/GLO_Filter_Code.dir/build.make CMakeFiles/GLO_Filter_Code.dir/Filters.cpp.o
-.PHONY : Filters.cpp.o
+ScanningModes.cpp.o:
+	$(MAKE) -f CMakeFiles/GLO_Scanning_Modes.dir/build.make CMakeFiles/GLO_Scanning_Modes.dir/ScanningModes.cpp.o
+.PHONY : ScanningModes.cpp.o
 
-Filters.i: Filters.cpp.i
+ScanningModes.i: ScanningModes.cpp.i
 
-.PHONY : Filters.i
+.PHONY : ScanningModes.i
 
 # target to preprocess a source file
-Filters.cpp.i:
-	$(MAKE) -f CMakeFiles/GLO_Filter_Code.dir/build.make CMakeFiles/GLO_Filter_Code.dir/Filters.cpp.i
-.PHONY : Filters.cpp.i
+ScanningModes.cpp.i:
+	$(MAKE) -f CMakeFiles/GLO_Scanning_Modes.dir/build.make CMakeFiles/GLO_Scanning_Modes.dir/ScanningModes.cpp.i
+.PHONY : ScanningModes.cpp.i
 
-Filters.s: Filters.cpp.s
+ScanningModes.s: ScanningModes.cpp.s
 
-.PHONY : Filters.s
+.PHONY : ScanningModes.s
 
 # target to generate assembly for a file
-Filters.cpp.s:
-	$(MAKE) -f CMakeFiles/GLO_Filter_Code.dir/build.make CMakeFiles/GLO_Filter_Code.dir/Filters.cpp.s
-.PHONY : Filters.cpp.s
+ScanningModes.cpp.s:
+	$(MAKE) -f CMakeFiles/GLO_Scanning_Modes.dir/build.make CMakeFiles/GLO_Scanning_Modes.dir/ScanningModes.cpp.s
+.PHONY : ScanningModes.cpp.s
 
 main.o: main.cpp.o
 
@@ -156,7 +156,7 @@ main.o: main.cpp.o
 
 # target to build an object file
 main.cpp.o:
-	$(MAKE) -f CMakeFiles/GLO_Filter_Code.dir/build.make CMakeFiles/GLO_Filter_Code.dir/main.cpp.o
+	$(MAKE) -f CMakeFiles/GLO_Scanning_Modes.dir/build.make CMakeFiles/GLO_Scanning_Modes.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -165,7 +165,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) -f CMakeFiles/GLO_Filter_Code.dir/build.make CMakeFiles/GLO_Filter_Code.dir/main.cpp.i
+	$(MAKE) -f CMakeFiles/GLO_Scanning_Modes.dir/build.make CMakeFiles/GLO_Scanning_Modes.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -174,7 +174,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) -f CMakeFiles/GLO_Filter_Code.dir/build.make CMakeFiles/GLO_Filter_Code.dir/main.cpp.s
+	$(MAKE) -f CMakeFiles/GLO_Scanning_Modes.dir/build.make CMakeFiles/GLO_Scanning_Modes.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 # Help Target
@@ -185,10 +185,10 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... GLO_Filter_Code"
-	@echo "... Filters.o"
-	@echo "... Filters.i"
-	@echo "... Filters.s"
+	@echo "... GLO_Scanning_Modes"
+	@echo "... ScanningModes.o"
+	@echo "... ScanningModes.i"
+	@echo "... ScanningModes.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
