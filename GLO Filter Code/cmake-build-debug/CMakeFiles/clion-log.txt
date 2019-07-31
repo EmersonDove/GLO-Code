@@ -1,0 +1,4 @@
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" "/Users/Emerson/Documents/Space@VT/Code/GLO-Code/GLO Filter Code"
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /Users/Emerson/Documents/Space@VT/Code/GLO-Code/GLO Filter Code/cmake-build-debug
