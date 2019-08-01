@@ -1,9 +1,7 @@
-#include <iostream>
-#include <string>
 #include <vector>
 #include <mutex>
-#include <thread>
 #include "CircularBuffer.hpp"
+
 using namespace std;
 
 enum class FilterType {
@@ -160,7 +158,7 @@ protected:
     int NPOLES = 1;
     double GAIN = 7.173081781e+01;
     double sum = 0;
-    double size = 0;
+    int size = 0;
 public:
     ButterWorthLowPass(int theRollingLength) : FilterBase(theRollingLength) {
         filter_type = FilterType::BUTTERWORTH;

@@ -5,9 +5,7 @@
 //  Created by Emerson on 7/19/19.
 //  Copyright © 2019 Emerson. All rights reserved.
 //
-#include <stdio.h>
 #include <iostream>
-#include <array>
 #include "Filters.cpp"
 #include <vector>
 

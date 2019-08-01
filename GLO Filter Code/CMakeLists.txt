@@ -4,3 +4,5 @@ project(GLO_Filter_Code)
 set(CMAKE_CXX_STANDARD 14)
 
 add_executable(GLO_Filter_Code main.cpp "Filters.cpp" pch.h CircularBuffer.hpp)
+
+#add_executable("../GLO Scanning Modes/main.cpp" "../GLO Scanning Modes/ScanningModes.cpp")
