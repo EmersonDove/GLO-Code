@@ -1,5 +1,6 @@
 #include <vector>
 #include <mutex>
+#include <iostream>
 #include "CircularBuffer.hpp"
 
 using namespace std;
@@ -114,6 +115,7 @@ protected:
     int arrLength = 0;
     int i = 0;
     double sum = 0.0;
+    double a;
 
 public:
     HighPassFilter(int theRollingLength, double theCutOffFrequency = 0.5) : FilterBase(theRollingLength) {
@@ -136,15 +138,16 @@ public:
         input.read(0, bufferValue);
         data[0] = bufferValue;
 
-        double a = cutoffFrequency;
+        a = cutoffFrequency;
         for (i = 1; i < arrLength; i++) {
             oldBufferValue = bufferValue;
             input.read(i, bufferValue);
             data[i] = (a * (data[i - 1] + bufferValue - oldBufferValue));
         }
         sum = 0;
-        for (i = arrLength - 1; i >= arrLength - rollingLength; i++) {
-            sum = sum + data[i];
+
+        for (i = arrLength - 1; i >= arrLength - rollingLength; i--) {
+                sum = sum + data[i];
         }
         data.empty();
         return sum / rollingLength;
@@ -165,6 +168,7 @@ public:
     }
 
     double Execute(circular_buffer<double>& input) override {
+        std::lock_guard<std::mutex> lock(padlock);
         size = input.size();
 
         rollingLength = originalRollingLength;
