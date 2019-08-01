@@ -5,6 +5,7 @@
 //  Created by Emerson on 7/19/19.
 //  Copyright © 2019 Emerson. All rights reserved.
 //
+
 #include <iostream>
 #include "Filters.cpp"
 #include <vector>
@@ -17,7 +18,7 @@ int main() {
     circular_buffer<double> c(10);
 
     //Fill buffer to start
-    for (int i = 0; i<c.size(); i++) {
+    for (int i = 0; i<10; i++) {
         c.put(data[i]);
     }
 

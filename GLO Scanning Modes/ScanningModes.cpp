@@ -199,9 +199,10 @@ protected:
     intPoint currentLocation{0,0};
 public:
     S_TOP_LEFT(int xNumber, int yNumber, int lingerTime) : ScanningBase(xNumber,yNumber,lingerTime) {
+
     };
     Point getOffset() {
-        if (scanning == true) {
+        if (scanning) {
             advanceSScan(currentLocation);
             return Point(*angles.at(currentLocation.getY()).at(currentLocation.getX()));
         }
