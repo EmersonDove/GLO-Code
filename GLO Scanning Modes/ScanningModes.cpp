@@ -5,9 +5,9 @@
 //  Created by Emerson on 7/16/19.
 //  Copyright © 2019 Emerson. All rights reserved.
 //
-#include <stdio.h>
 #include <vector>
 #include <iostream>
+#include <mutex>
 
 //std::mutex mtx;
 using namespace std;
@@ -60,6 +60,7 @@ public:
 
 class ScanningBase {
 protected:
+    std::mutex padlock;
     //Time spent in each grid
     int lingerTime;
     //Time in current grid
@@ -75,6 +76,9 @@ protected:
     int tableYLimit;
 
     bool scanning = false;
+
+    double pushX = 0;
+    double pushY = 0;
 public:
     //Constructor - sets in initation
     ScanningBase(int x, int y, int lingerTime_) {
@@ -83,6 +87,14 @@ public:
         lingerTime = lingerTime_;
         createAngleTable(x, y);
     };
+    ScanningBase(int x, int y, int lingerTime_, double offsetX_, double offsetY_) {
+        tableXLimit = x-1;
+        tableYLimit = y-1;
+        pushX = offsetX_;
+        pushY = offsetY_;
+        lingerTime = lingerTime_;
+        createAngleTable(x,y);
+    }
 
     //Setters for table generation
     void setSensorWidth(int width) {
@@ -96,6 +108,11 @@ public:
     void setSunPixelDiameter(int diameter) {
         sunPixelDiameter=diameter;
         createAngleTable(tableXLimit+1,tableYLimit+1);
+    }
+    void setAngleTableDimensions(int newTableX, int newTableY) {
+        tableXLimit = newTableX-1;
+        tableYLimit = newTableY-1;
+        createAngleTable(newTableX,newTableY);
     }
 
     //Creates the table which has the angles
@@ -117,7 +134,7 @@ public:
         for (int j = 0; j<y; j++) {
             vector<Point *> xVals;
             for (int i = 0; i<x; i++) {
-                xVals.push_back(new Point(offsetX+(unitX*i*2),(offsetY+(unitY*j*2))*-1 ));
+                xVals.push_back(new Point((offsetX+(unitX*i*2))+pushX,((offsetY+(unitY*j*2))*-1 )+pushY));
             }
             angles.push_back(xVals);
         }
@@ -136,39 +153,6 @@ public:
             std::cout << endl;
         }
     };
-    //Advances an S shape scan. This algorithm needs worth to implement other types of scans if they are necessary.
-    //I want it to work for all S modes, but for now it only does the S_TOP_LEFT scan so it could be placed in the S_TOP_LEFT class
-    void advanceSScan(intPoint &input) {
-        if (lingeringNumber < lingerTime-1) {
-            lingeringNumber++;
-            return;
-        }
-        else {
-            lingeringNumber = 0;
-            if (input.getY() % 2 == 0) {
-                if (input.getX() == tableXLimit) {
-                    if (input.getY() != tableYLimit) {
-                        advanceDown(input);
-                    }
-                    else {
-                        input.setX(0);
-                        input.setY(0);
-                    }
-                    return;
-                }
-                advanceRight(input);
-                return;
-            }
-            else {
-                if (input.getX() == 0) {
-                    advanceDown(input);
-                    return;
-                }
-                advanceLeft(input);
-                return;
-            }
-        }
-    }
 
     void enableScan() {
         scanning = true;
@@ -176,44 +160,94 @@ public:
     void disableScan() {
         scanning = false;
     }
-
-private:
-    //Advancements
-    void advanceDown(intPoint &p) {
-        p.setY(p.getY()+1);
-    }
-    void advanceLeft(intPoint &p) {
-        p.setX(p.getX()-1);
-    }
-    void advanceRight(intPoint &p) {
-        p.setX(p.getX()+1);
-    }
-    void advanceUp(intPoint &p) {
-        p.setY(p.getY()-1);
-    }
 };
 
 //Starts in the top left and does an S shape down
 class S_TOP_LEFT : public ScanningBase {
 protected:
     intPoint currentLocation{0,0};
+    vector<Point> convertedAngles;
+    int currentLinger = -1;
+    int currentPoint = 0;
+private:
+    void generateConvertedArray() {
+        int currentX = 0;
+        int currentY = 0;
+        convertedAngles.clear();
+        while(true) {
+            if (currentY % 2 == 0) {
+                if (currentX != tableXLimit+1) {
+                    convertedAngles.push_back(*angles[currentY][currentX]);
+                    currentX++;
+                }
+                else {
+                    if (currentY != tableYLimit) {
+                        currentY++;
+                    }
+                    else {
+                        break;
+                    }
+                }
+            }
+            else {
+                if (currentX != 0) {
+                    currentX--;
+                    convertedAngles.push_back(*angles[currentY][currentX]);
+                }
+                else {
+                    if (currentY != tableYLimit) {
+                        currentY++;
+                    }
+                    else {
+                        break;
+                    }
+                }
+            }
+        }
+    }
 public:
     S_TOP_LEFT(int xNumber, int yNumber, int lingerTime) : ScanningBase(xNumber,yNumber,lingerTime) {
-
+        std::lock_guard<std::mutex> lock(padlock);
+        generateConvertedArray();
     };
+    S_TOP_LEFT(int xNumber, int yNumber, int lingerTime, double offsetX, double offsetY) : ScanningBase(xNumber, yNumber, lingerTime,offsetX,offsetY) {
+        std::lock_guard<std::mutex> lock(padlock);
+        generateConvertedArray();
+    };
+    void regenerateAngles() {
+        generateConvertedArray();
+    }
     Point getOffset() {
         if (scanning) {
-            advanceSScan(currentLocation);
-            return Point(*angles.at(currentLocation.getY()).at(currentLocation.getX()));
+            if (currentLinger == lingerTime-1) {
+                currentPoint++;
+                currentLinger = 0;
+                if (currentPoint == convertedAngles.size()) {
+                    currentPoint = 0;
+                }
+                return convertedAngles[currentPoint];
+            }
+            else {
+                currentLinger++;
+                return convertedAngles[currentPoint];
+            }
         }
         else {
             return Point(0,0);
         }
     }
+//    Point getOffset() {
+//        if (scanning) {
+//            advanceSScan(currentLocation);
+//            return Point(*angles.at(currentLocation.getY()).at(currentLocation.getX()));
+//        }
+//        else {
+//            return Point(0,0);
+//        }
+//    }
     //Direct access to currentLocation makes it necessary to place in this class, but with more modes I can make a getter/setter
     void resetScan() {
-        currentLocation.setX(0);
-        currentLocation.setY(0);
-        lingeringNumber = -1;
+        currentLinger = -1;
+        currentPoint = 0;
     }
 };
